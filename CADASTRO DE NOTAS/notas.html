@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="WIDTH=device-width, INITIAL-SCALE=1.0">
+    <title>CADASTRO DE NOTAS</title>
+    <link rel="stylesheet" href="notas.css">
+</head>
+<body>
+    <div class="container">
+        <h1>CADASTRO DE NOTAS</h1>
+        <form id="form-inicial">
+            <label for="num-alunos">NÚMERO DE ALUNOS:</label>
+            <input type="number" id="num-alunos" min="1" required>
+
+            <label for="num-avaliacoes">NÚMERO DE AVALIAÇÕES:</label>
+            <input type="number" id="num-avaliacoes" min="1" required>
+
+            <button type="button" onclick="gerarFormulario()">CONFIRMAR</button>
+        </form>
+
+        <form id="form-dinamico" action="recebe.php" method="post" style="DISPLAY: none;">
+            <h2>INSERIR NOTAS</h2>
+            <table id="formulario-notas">
+                <thead>
+                    <tr>
+                        <th>ALUNO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <button type="submit">ENVIAR NOTAS</button>
+        </form>
+    </div>
+
+    <script>
+        function gerarFormulario() {
+            const NUM_ALUNOS = parseInt(document.getElementById('num-alunos').value);
+            const NUM_AVALIACOES = parseInt(document.getElementById('num-avaliacoes').value);
+
+            IF (isNaN(NUM_ALUNOS) || isNaN(NUM_AVALIACOES) || NUM_ALUNOS < 1 || NUM_AVALIACOES < 1) {
+                alert("INSIRA NÚMEROS VÁLIDOS.");
+                return;
+            }
+
+            const FORMULARIO_NOTAS = document.getElementById('formulario-notas');
+            const TBODY = FORMULARIO_NOTAS.getElementsByTagName('tbody')[0];
+            const THEAD_TR = FORMULARIO_NOTAS.getElementsByTagName('thead')[0].getElementsByTagName('tr')[0];
+
+            // LIMPAR FORMULÁRIO
+            TBODY.innerHTML = '';
+            THEAD_TR.innerHTML = '<th>ALUNO</th>';
+
+            // CABEÇALHOS AVALIAÇÕES
+            FOR (LET I = 1; I <= NUM_AVALIACOES; I++) {
+                const TH = document.createElement('th');
+                TH.textContent = `AVALIAÇÃO ${I}`;
+                THEAD_TR.appendChild(TH);
+            }
+            THEAD_TR.appendChild(document.createElement('th')); // COLUNA EXCLUIR
+
+            // LINHAS ALUNOS
+            FOR (LET I = 0; I < NUM_ALUNOS; I++) {
+                const TR = document.createElement('tr');
+
+                // CAMPO NOME ALUNO
+                const TD_ALUNO = document.createElement('td');
+                const INPUT_ALUNO = document.createElement('input');
+                INPUT_ALUNO.type = 'text';
+                INPUT_ALUNO.name = `notas[${I}][Aluno]`;
+                INPUT_ALUNO.placeholder = `NOME DO ALUNO`;
+                INPUT_ALUNO.classList.add('campo-aluno');
+                INPUT_ALUNO.required = true;
+                TD_ALUNO.appendChild(INPUT_ALUNO);
+                TR.appendChild(TD_ALUNO);
+
+                // CAMPOS NOTAS
+                FOR (LET J = 0; J < NUM_AVALIACOES; J++) {
+                    const TD_NOTA = document.createElement('td');
+                    const INPUT_NOTA = document.createElement('input');
+                    INPUT_NOTA.type = 'number';
+                    INPUT_NOTA.name = `notas[${I}][Avaliacao][${J}]`;
+                    INPUT_NOTA.min = '0';
+                    INPUT_NOTA.max = '100';
+                    INPUT_NOTA.placeholder = '0-100';
+                    INPUT_NOTA.classList.add('campo-nota');
+                    INPUT_NOTA.required = true;
+                    TD_NOTA.appendChild(INPUT_NOTA);
+                    TR.appendChild(TD_NOTA);
+                }
+
+                // BOTÃO EXCLUIR
+                const TD_EXCLUIR = document.createElement('td');
+                const BTN_EXCLUIR = document.createElement('button');
+                BTN_EXCLUIR.type = 'button';
+                BTN_EXCLUIR.textContent = 'EXCLUIR';
+                BTN_EXCLUIR.classList.add('excluir-linha');
+                BTN_EXCLUIR.onclick = function() {
+                    TBODY.removeChild(TR);
+                };
+                TD_EXCLUIR.appendChild(BTN_EXCLUIR);
+                TR.appendChild(TD_EXCLUIR);
+
+                TBODY.appendChild(TR);
+            }
+
+            // MOSTRAR FORMULÁRIO DINÂMICO
+            document.getElementById('form-inicial').style.display = 'none';
+            document.getElementById('form-dinamico').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
