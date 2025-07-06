@@ -1,0 +1,198 @@
+/* ESTILOS GERAIS */
+BODY {
+    FONT-FAMILY: 'Arial', sans-serif;
+    BACKGROUND-COLOR: #f4f4f4;
+    MARGIN: 0;
+    PADDING: 0;
+    DISPLAY: flex;
+    JUSTIFY-CONTENT: center;
+    ALIGN-ITEMS: center;
+    MIN-HEIGHT: 100vh;
+}
+
+.container {
+    BACKGROUND-COLOR: #fff;
+    PADDING: 30px;
+    BORDER-RADIUS: 8px;
+    BOX-SHADOW: 0 2px 5px rgba(0, 0, 0, 0.1);
+    WIDTH: 90%;
+    MAX-WIDTH: 800px;
+}
+
+H1, H2 {
+    COLOR: #333;
+    TEXT-ALIGN: center;
+    MARGIN-BOTTOM: 20px;
+}
+
+LABEL {
+    DISPLAY: block;
+    MARGIN-BOTTOM: 8px;
+    COLOR: #555;
+    FONT-WEIGHT: bold;
+}
+
+INPUT[type="number"],
+INPUT[type="text"] {
+    WIDTH: calc(100% - 12px);
+    PADDING: 10px;
+    MARGIN-BOTTOM: 15px;
+    BORDER: 1px solid #ddd;
+    BORDER-RADIUS: 4px;
+    BOX-SIZING: border-box;
+}
+
+BUTTON {
+    BACKGROUND-COLOR: #007bff;
+    COLOR: white;
+    PADDING: 10px 15px;
+    BORDER: none;
+    BORDER-RADIUS: 4px;
+    CURSOR: pointer;
+    FONT-SIZE: 16px;
+    TRANSITION: background-color 0.3s ease;
+}
+
+BUTTON:hover {
+    BACKGROUND-COLOR: #0056b3;
+}
+
+/* ESTILOS FORMULÁRIO DINÂMICO */
+#form-dinamico H2 {
+    MARGIN-TOP: 30px;
+}
+
+#formulario-notas {
+    WIDTH: 100%;
+    BORDER-COLLAPSE: collapse;
+    MARGIN-TOP: 20px;
+    BOX-SHADOW: 0 1px 3px rgba(0, 0, 0, 0.05);
+    BORDER-RADIUS: 4px;
+    OVERFLOW: hidden;
+}
+
+#formulario-notas TH,
+#formulario-notas TD {
+    PADDING: 12px 15px;
+    TEXT-ALIGN: center;
+    BORDER-BOTTOM: 1px solid #eee;
+}
+
+#formulario-notas TH {
+    BACKGROUND-COLOR: #f8f9fa;
+    COLOR: #333;
+    FONT-WEIGHT: bold;
+}
+
+#formulario-notas TR:nth-child(even) {
+    BACKGROUND-COLOR: #f2f2f2;
+}
+
+#formulario-notas TR:last-child TD {
+    BORDER-BOTTOM: none;
+}
+
+.excluir-linha {
+    BACKGROUND-COLOR: #dc3545;
+    COLOR: white;
+    BORDER: none;
+    PADDING: 8px 12px;
+    TEXT-ALIGN: center;
+    TEXT-DECORATION: none;
+    DISPLAY: inline-block;
+    FONT-SIZE: 14px;
+    CURSOR: pointer;
+    BORDER-RADIUS: 4px;
+    TRANSITION: background-color 0.3s ease;
+}
+
+.excluir-linha:hover {
+    BACKGROUND-COLOR: #c82333;
+}
+
+.campo-aluno {
+    MAX-WIDTH: 180px;
+    WIDTH: 100%;
+}
+
+.campo-nota {
+    WIDTH: 80px;
+}
+
+/* ESTILOS RELATÓRIO PHP */
+.report-container {
+    BACKGROUND-COLOR: #fff;
+    PADDING: 30px;
+    BORDER-RADIUS: 8px;
+    BOX-SHADOW: 0 2px 5px rgba(0, 0, 0, 0.1);
+    WIDTH: 90%;
+    MAX-WIDTH: 900px;
+}
+
+.report-container H1 {
+    COLOR: #333;
+    TEXT-ALIGN: center;
+    MARGIN-BOTTOM: 20px;
+}
+
+.report-container P {
+    COLOR: #555;
+    MARGIN-BOTTOM: 15px;
+    TEXT-ALIGN: center;
+}
+
+.report-container TABLE {
+    WIDTH: 100%;
+    BORDER-COLLAPSE: collapse;
+    MARGIN-TOP: 20px;
+    BOX-SHADOW: 0 1px 3px rgba(0, 0, 0, 0.05);
+    BORDER-RADIUS: 4px;
+    OVERFLOW: hidden;
+}
+
+.report-container TH,
+.report-container TD {
+    PADDING: 12px 15px;
+    TEXT-ALIGN: left;
+    BORDER-BOTTOM: 1px solid #eee;
+}
+
+.report-container TH {
+    BACKGROUND-COLOR: #f8f9fa;
+    COLOR: #333;
+    FONT-WEIGHT: bold;
+    TEXT-ALIGN: center;
+}
+
+.report-container TD {
+    TEXT-ALIGN: center;
+}
+
+.report-container TR:nth-child(even) {
+    BACKGROUND-COLOR: #f2f2f2;
+}
+
+.report-container TR:last-child TD {
+    BORDER-BOTTOM: none;
+}
+
+.aprovado {
+    COLOR: green;
+    FONT-WEIGHT: bold;
+}
+
+.reprovado {
+    COLOR: red;
+    FONT-WEIGHT: bold;
+}
+
+.report-container PRE {
+    BACKGROUND-COLOR: #eee;
+    PADDING: 15px;
+    BORDER-RADIUS: 4px;
+    OVERFLOW-X: auto;
+    FONT-SIZE: 0.9em;
+    LINE-HEIGHT: 1.6;
+    MARGIN-TOP: 20px;
+    COLOR: #333;
+}
